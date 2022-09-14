@@ -1,0 +1,42 @@
+# IntelliJ
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.idea/*
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/dictionaries
+.idea/libraries
+.idea/misc.xml
+.idea/vcs.xml
+.idea/runConfigurations.xml
+# macOS.DS_Store
+# Version control
+vcs.xml
+# lint
+lint/intermediates/
+lint/generated/
+lint/outputs/
+lint/tmp/
+lint/reports/
+# Build
+/build
+/captures
+.cxx
+# Gradle properties
+gradle.properties
+.gradle
+.idea/
+.idea/caches
+.idea/modules.xml
+# Comment next line if keeping position of elements in Navigation Editor is relevant for you
+.idea/navEditor.xml
+captures/
+bin/
+gen/
+out/
+test-output
