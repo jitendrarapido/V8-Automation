@@ -11,10 +11,9 @@
         </classes>
     </test>
 
-
-   <listeners>
+    <listeners>
         <listener class-name="utils.retry.RetryTestListener"/>
         <listener class-name="utils.retry.RetryListener"/>
-      </listeners>
+    </listeners>
 
 </suite>

@@ -1,9 +1,12 @@
 package screens.loginandregisteration;
 
+import com.rapido.api.data.Customer;
+import com.rapido.api.utils.CustomerPool;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utils.CommonAction;
 
 public class LoginScreen {
 
@@ -28,15 +31,23 @@ public class LoginScreen {
     private WebElement nextButton;
 
     //Pom class
-    public void tapOnLoginOption() {
+    public void tapOnLoginFlow() {
+        CommonAction commonAction = new CommonAction(driver);
+        commonAction.waitForElementToBeVisible(loginFlow);
         loginFlow.click();
     }
 
-    public void enterMobileNumber() throws InterruptedException {
+    public void enterMobileNumber() {
+        Customer customer = new CustomerPool().getValidCustomer();
+        String mobile = customer.getMobileNumber();
+        CommonAction commonAction = new CommonAction(driver);
+        commonAction.waitForElementToBeClickable(enterMobileNumber);
         enterMobileNumber.click();
-        Thread.sleep(2000);
-        enterMobileNumber.sendKeys("9663806628");
-        Thread.sleep(5000);
+        enterMobileNumber.sendKeys(mobile);
+        commonAction.hideKeyboard();
+        commonAction.waitForElementToBeClickable(nextButton);
         nextButton.click();
     }
+
+
 }

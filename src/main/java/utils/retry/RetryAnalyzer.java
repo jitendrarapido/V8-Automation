@@ -1,6 +1,7 @@
 package utils.retry;
 
 import java.util.concurrent.TimeUnit;
+
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 
@@ -14,11 +15,8 @@ public class RetryAnalyzer implements IRetryAnalyzer {
 
     @Override
     public boolean retry(ITestResult result) {
-        //setRetryCount();
         if (count < maxCount) {
-           /* ReporterUtil
-                    .log("Running retry logic for '" + result.getName() + "' on class " + this.getClass().getName());
-           */ try {
+            try {
                 TimeUnit.SECONDS.sleep(2);
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
@@ -29,14 +27,6 @@ public class RetryAnalyzer implements IRetryAnalyzer {
         }
         return false;
     }
-
-   /* private void setRetryCount() {
-        if (RapidoProperties.RETRY_COUNT != null) {
-            maxCount = Integer.parseInt(RapidoProperties.RETRY_COUNT);
-        } else {
-            maxCount = 0;
-        }
-    }*/
 
     public boolean isRetryAvailable() {
         return (count < maxCount);
