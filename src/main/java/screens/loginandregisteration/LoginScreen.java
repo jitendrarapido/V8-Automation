@@ -1,7 +1,5 @@
 package screens.loginandregisteration;
 
-import com.rapido.api.data.Customer;
-import com.rapido.api.utils.CustomerPool;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.WebElement;
@@ -10,11 +8,13 @@ import utils.CommonAction;
 
 public class LoginScreen {
 
-    public static AppiumDriver driver;
+    private  AppiumDriver driver;
+    private CommonAction commonAction;
 
     public LoginScreen(AppiumDriver driver) {
-        super();
+        //super();
         PageFactory.initElements(driver, this);
+        commonAction = new CommonAction(driver);
         this.driver = driver;
     }
 
@@ -31,22 +31,20 @@ public class LoginScreen {
     private WebElement nextButton;
 
     //Pom class
-    public void tapOnLoginFlow() {
-        CommonAction commonAction = new CommonAction(driver);
+    public void initiateLoginFlow() {
         commonAction.waitForElementToBeVisible(loginFlow);
         loginFlow.click();
     }
 
-    public void enterMobileNumber() {
-        Customer customer = new CustomerPool().getValidCustomer();
-        String mobile = customer.getMobileNumber();
-        CommonAction commonAction = new CommonAction(driver);
+    public VerifyOtpScreen enterMobileNumberAndSubmit(String phoneNo) {
+
         commonAction.waitForElementToBeClickable(enterMobileNumber);
         enterMobileNumber.click();
-        enterMobileNumber.sendKeys(mobile);
+        enterMobileNumber.sendKeys(phoneNo);
         commonAction.hideKeyboard();
         commonAction.waitForElementToBeClickable(nextButton);
         nextButton.click();
+        return new VerifyOtpScreen(driver);
     }
 
 
