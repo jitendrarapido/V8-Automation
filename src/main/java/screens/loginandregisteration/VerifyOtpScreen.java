@@ -8,47 +8,25 @@ import utils.CommonAction;
 
 public class VerifyOtpScreen {
 
-    public static AppiumDriver driver;
+    public AppiumDriver driver;
+    private CommonAction commonAction;
 
     public VerifyOtpScreen(AppiumDriver driver) {
         super();
         PageFactory.initElements(driver, this);
         this.driver = driver;
+        commonAction = new CommonAction(driver);
     }
 
     @FindBy(className = "android.widget.EditText")
     private WebElement otpScreen;
 
-
-    @FindBy(className = "android.widget.EditText")
-    private WebElement name;
-
-
-    @FindBy(xpath = "//android.widget.TextView[@text=\"Next\"]")
-    private WebElement nextButton;
-
-    public void verifyOtpPage() {
-        CommonAction commonAction = new CommonAction(driver);
+    public ProfileScreen enterOTP(String generatedOtp) {
         commonAction.waitForElementToBeVisible(otpScreen);
         otpScreen.click();
-    }
-
-    public void enterOTP(String generatedOtp) {
-        CommonAction commonAction = new CommonAction(driver);
-        commonAction.waitForElementToBeVisible(otpScreen);
         otpScreen.sendKeys(generatedOtp);
+        return new ProfileScreen(driver);
     }
 
-    public void lastStepPage() {
-        CommonAction commonAction = new CommonAction(driver);
-        if (commonAction.waitForElementToBeVisible(name).isDisplayed()) {
-            name.click();
-            name.sendKeys("Testing");
-            commonAction.hideKeyboard();
-            commonAction.waitForElementToBeVisible(nextButton);
-            nextButton.click();
-        } else {
-            System.out.println("Last step Page not found");
-        }
-    }
+
 }

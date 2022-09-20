@@ -1,22 +1,30 @@
 package userjourney;
 
+import com.rapido.api.data.Customer;
+import com.rapido.api.utils.CustomerPool;
 import org.testng.annotations.Test;
 import screens.loginandregisteration.LoginScreen;
-import screens.loginandregisteration.VerifyOtpScreen;
 import utils.CommonAction;
 
 public class LoginFlowTestCase extends StartingSteps {
 
+    private LoginScreen loginScreen ;
+    private CommonAction commonAction;
+
+    public LoginFlowTestCase() {
+        loginScreen = new LoginScreen(driver);
+        commonAction = new CommonAction(driver);
+    }
+
     //Test class
     @Test
     public void verifyLoginFlow(){
-        LoginScreen loginScreen = new LoginScreen(driver);
-        CommonAction commonAction = new CommonAction(driver);
-        loginScreen.tapOnLoginFlow();
-        loginScreen.enterMobileNumber();
-        VerifyOtpScreen verifyOtpScreen = new VerifyOtpScreen(driver);
-        verifyOtpScreen.verifyOtpPage();
-        verifyOtpScreen.enterOTP(commonAction.connectToDB());
-        verifyOtpScreen.lastStepPage();
+        Customer customer = new CustomerPool().getValidCustomer();
+
+        loginScreen.initiateLoginFlow();
+        loginScreen.enterMobileNumberAndSubmit(customer.getMobileNumber())
+                .enterOTP(commonAction.connectToDB())
+                .enterProfileDetails(customer.getFirstName());
+
     }
 }
