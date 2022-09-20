@@ -15,8 +15,6 @@ public class LoginFlowTestCase extends StartingSteps {
         loginScreen = new LoginScreen(driver);
         commonAction = new CommonAction(driver);
     }
-
-    //Test class
     @Test
     public void verifyLoginFlow(){
         Customer customer = new CustomerPool().getValidCustomer();
