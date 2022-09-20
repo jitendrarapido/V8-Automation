@@ -25,4 +25,13 @@ public class LoginFlowTestCase extends StartingSteps {
                 .enterProfileDetails(customer.getFirstName());
 
     }
+    @Test
+    public void verifyLoginFlowWithExistingUser(){
+        Customer customer = new CustomerPool().getValidCustomer();
+
+        loginScreen.initiateLoginFlow();
+        loginScreen.enterMobileNumberAndSubmit(customer.getMobileNumber())
+                .enterOTPForNewUser(commonAction.connectToDB());
+
+    }
 }

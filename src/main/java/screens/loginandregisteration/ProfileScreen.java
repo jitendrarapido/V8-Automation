@@ -4,6 +4,7 @@ import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import screens.home.HomeScreen;
 import utils.CommonAction;
 
 public class ProfileScreen {
@@ -20,12 +21,11 @@ public class ProfileScreen {
         PageFactory.initElements(driver, this);
         this.driver= driver;
     }
-    public void enterProfileDetails(String name) {
+    public HomeScreen enterProfileDetails(String name) {
             nameInputBox.sendKeys(name);
             commonAction.hideKeyboard();
             commonAction.waitForElementToBeVisible(nextButton);
             nextButton.click();
-
-
+            return new HomeScreen(driver);
     }
 }
