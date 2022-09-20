@@ -16,12 +16,12 @@ public class LoginFlowTestCase extends StartingSteps {
         commonAction = new CommonAction(driver);
     }
     @Test
-    public void verifyLoginFlow(){
+    public void verifyRegistrationFlowWithNewUser(){
         Customer customer = new CustomerPool().getValidCustomer();
 
         loginScreen.initiateLoginFlow();
         loginScreen.enterMobileNumberAndSubmit(customer.getMobileNumber())
-                .enterOTP(commonAction.connectToDB())
+                .enterOTPForNewUser(commonAction.connectToDB())
                 .enterProfileDetails(customer.getFirstName());
 
     }
