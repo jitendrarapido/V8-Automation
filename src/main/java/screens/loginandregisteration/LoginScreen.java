@@ -34,6 +34,7 @@ public class LoginScreen {
     public void initiateLoginFlow() {
         commonAction.waitForElementToBeVisible(loginFlow);
         loginFlow.click();
+
     }
 
     public VerifyOtpScreen enterMobileNumberAndSubmit(String phoneNo) {

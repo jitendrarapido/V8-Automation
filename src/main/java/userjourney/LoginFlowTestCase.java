@@ -31,7 +31,8 @@ public class LoginFlowTestCase extends StartingSteps {
 
         loginScreen.initiateLoginFlow();
         loginScreen.enterMobileNumberAndSubmit(customer.getMobileNumber())
-                .enterOTPForNewUser(commonAction.connectToDB());
+                .enterOTPForExistingUser(commonAction.connectToDB());
 
     }
 }
+
