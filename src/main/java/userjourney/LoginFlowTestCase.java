@@ -27,7 +27,7 @@ public class LoginFlowTestCase extends StartingSteps {
     }
 
     /*@Test
-    public void verifyLoginFlowWithExistingUser(){
+    public void verifyRegistrationFlowWithNewUser(){
         LoginScreen loginScreen = new LoginScreen(driver);
         CommonAction commonAction = new CommonAction(driver);
 
@@ -37,3 +37,4 @@ public class LoginFlowTestCase extends StartingSteps {
 
     }*/
 }
+

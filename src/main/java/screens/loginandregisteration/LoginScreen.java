@@ -44,5 +44,4 @@ public class LoginScreen {
         return new VerifyOtpScreen(driver);
     }
 
-
 }
