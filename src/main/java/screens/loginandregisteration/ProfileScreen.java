@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.CommonAction;
+import utils.ScenarioContext;
 
 public class ProfileScreen {
 
@@ -22,10 +23,9 @@ public class ProfileScreen {
     }
     public void enterProfileDetails(String name) {
             nameInputBox.sendKeys(name);
+            ScenarioContext.putData("userName", name);
             commonAction.hideKeyboard();
-            commonAction.waitForElementToBeVisible(nextButton);
+            commonAction.waitForElementToBeVisible(nextButton,30);
             nextButton.click();
-
-
     }
 }
